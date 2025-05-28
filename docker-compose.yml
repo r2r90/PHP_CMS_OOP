@@ -13,6 +13,13 @@ services:
       - "8080:80"
     depends_on:
       - db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+      MYSQL_ADMIN_USERNAME: ${MYSQL_ADMIN_USERNAME}
+      MYSQL_ADMIN_PASSWORD: ${MYSQL_ADMIN_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
 
   db:
     image: mysql:8.0
@@ -23,7 +30,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ADMIN_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
-      MYSQL_USER_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
     ports:
       - "3306:3306"
     volumes:

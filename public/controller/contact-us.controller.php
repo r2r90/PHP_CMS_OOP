@@ -2,12 +2,18 @@
 
 class ContactController extends Controller
 {
+
     function runBeforeAction(): bool
     {
         if ($_SESSION['has-submitted-the-form'] ?? 0 == 1) {
 
-            $variables['title'] = "You have already contacted us!";
-            $variables['content'] = "We will back to you very soon!!!";
+
+            $dbh = DatabaseConnection::getInstance();
+            $dbc = $dbh->getConnection();
+
+            $pageObj = new Page($dbc);
+            $pageObj->findById(5);
+            $variables['pageObj'] = $pageObj;
             $template = new Template('default');
             $template->view('static-page', $variables);
             return false;
@@ -17,8 +23,13 @@ class ContactController extends Controller
 
     function defaultAction(): void
     {
-        $variables['title'] = "Contact Us";
-        $variables['content'] = "Share your problem with us!";
+
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+
+        $pageObj = new Page($dbc);
+        $pageObj->findById(3);
+        $variables['pageObj'] = $pageObj;
         $template = new Template('default');
         $template->view('contact/contact-us', $variables);
     }
@@ -31,8 +42,13 @@ class ContactController extends Controller
         $_SESSION['has-submitted-the-form'] = 1;
 
 
-        $variables['title'] = "Thank you for contacting us";
-        $variables['content'] = "We reply in few days.";
+
+        $dbh = DatabaseConnection::getInstance();
+        $dbc = $dbh->getConnection();
+
+        $pageObj = new Page($dbc);
+        $pageObj->findById(4);
+        $variables['pageObj'] = $pageObj;
         $template = new Template('default');
         $template->view('static-page', $variables);
     }
