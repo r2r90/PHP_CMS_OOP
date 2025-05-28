@@ -1,7 +1,7 @@
 <?php
 
 require_once 'src/Controller.php';
-
+session_start();
 
 $section = $_GET['section'] ?? $_POST['section'] ?? 'home';
 $action = $_GET['action'] ?? $_POST['action'] ?? 'default';

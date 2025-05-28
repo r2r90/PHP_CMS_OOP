@@ -2,9 +2,19 @@
 
 class ContactController extends Controller
 {
+    function runBeforeAction(): bool
+    {
+        if ($_SESSION['has-submitted-the-form'] ?? 0 == 1) {
+            include 'view/contact/contact-already-submitted.html';
+            return false;
+        }
+        return true;
+    }
+
     function defaultAction()
     {
-        include 'view/contact-us.html';
+        var_dump($_SESSION);
+        include 'view/contact/contact-us.html';
     }
 
     function submitContactFormAction(): void
@@ -12,8 +22,8 @@ class ContactController extends Controller
         // validate
         // store data
         // send email
-
-        include 'view/contact-thank.html';
+        $_SESSION['has-submitted-the-form'] = 1;
+        include 'view/contact/contact-thank.html';
     }
 
 
