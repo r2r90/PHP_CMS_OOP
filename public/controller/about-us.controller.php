@@ -1,2 +1,10 @@
 <?php
-include "view/about-us.html";
+
+class AboutUsController extends Controller
+{
+    function defaultAction():void
+    {
+        include "view/about-us.html";
+
+    }
+}

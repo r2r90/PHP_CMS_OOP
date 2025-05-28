@@ -1,11 +1,20 @@
 <?php
 
-$section = $_GET['section'] ?? 'home';
+require_once 'src/Controller.php';
 
-if ($section == 'about-us') {
+
+$section = $_GET['section'] ?? $_POST['section'] ?? 'home';
+$action = $_GET['action'] ?? $_POST['action'] ?? 'default';
+
+
+if ($section == 'about') {
     include 'controller/about-us.controller.php';
-} else if ($section == 'contact-us') {
+    $aboutUsController = new AboutUsController();
+    $aboutUsController->runAction($action);
+} else if ($section == 'contact') {
     include 'controller/contact-us.controller.php';
+    $contactController = new ContactController();
+    $contactController->runAction($action);
 } else {
     include 'controller/home-page.controller.php';
 }
