@@ -5,16 +5,22 @@ class ContactController extends Controller
     function runBeforeAction(): bool
     {
         if ($_SESSION['has-submitted-the-form'] ?? 0 == 1) {
-            include 'view/contact/contact-already-submitted.html';
+
+            $variables['title'] = "You have already contacted us!";
+            $variables['content'] = "We will back to you very soon!!!";
+            $template = new Template('default');
+            $template->view('static-page', $variables);
             return false;
         }
         return true;
     }
 
-    function defaultAction()
+    function defaultAction(): void
     {
-        var_dump($_SESSION);
-        include 'view/contact/contact-us.html';
+        $variables['title'] = "Contact Us";
+        $variables['content'] = "Share your problem with us!";
+        $template = new Template('default');
+        $template->view('contact/contact-us', $variables);
     }
 
     function submitContactFormAction(): void
@@ -23,7 +29,12 @@ class ContactController extends Controller
         // store data
         // send email
         $_SESSION['has-submitted-the-form'] = 1;
-        include 'view/contact/contact-thank.html';
+
+
+        $variables['title'] = "Thank you for contacting us";
+        $variables['content'] = "We reply in few days.";
+        $template = new Template('default');
+        $template->view('static-page', $variables);
     }
 
 
