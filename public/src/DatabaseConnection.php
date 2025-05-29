@@ -18,7 +18,7 @@ final class DatabaseConnection
         throw new \Exception("Cannot unserialize singleton");
     }
 
-    public static function getInstance()
+    public static function getInstance(): DatabaseConnection
     {
 
         if (is_null(self::$instance)) {

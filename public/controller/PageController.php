@@ -1,6 +1,6 @@
 <?php
 
-class HomePageController extends Controller
+class PageController extends Controller
 {
     function defaultAction(): void
     {
@@ -8,10 +8,11 @@ class HomePageController extends Controller
         $dbc = $dbh->getConnection();
 
         $pageObj = new Page($dbc);
-        $pageObj->findById(1);
+        $pageObj->findBy('id', $this->entityId);
         $variables['pageObj'] = $pageObj;
 
         $template = new Template('default');
         $template->view('static-page', $variables);
     }
+
 }

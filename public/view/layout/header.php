@@ -11,10 +11,10 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?section=about">About Us</a>
+                <a class="nav-link" href="about_us">About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/index.php?section=contact">Contact Us</a>
+                <a class="nav-link" href="contact_us">Contact Us</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"

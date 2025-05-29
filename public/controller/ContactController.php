@@ -7,15 +7,15 @@ class ContactController extends Controller
     {
         if ($_SESSION['has-submitted-the-form'] ?? 0 == 1) {
 
-
             $dbh = DatabaseConnection::getInstance();
             $dbc = $dbh->getConnection();
 
             $pageObj = new Page($dbc);
-            $pageObj->findById(5);
+            $pageObj->findBy('id', $this->entityId);
             $variables['pageObj'] = $pageObj;
+
             $template = new Template('default');
-            $template->view('static-page', $variables);
+            $template->view('contact/contact-us', $variables);
             return false;
         }
         return true;
@@ -28,7 +28,7 @@ class ContactController extends Controller
         $dbc = $dbh->getConnection();
 
         $pageObj = new Page($dbc);
-        $pageObj->findById(3);
+        $pageObj->findBy('id', $this->entityId);
         $variables['pageObj'] = $pageObj;
         $template = new Template('default');
         $template->view('contact/contact-us', $variables);
@@ -42,12 +42,11 @@ class ContactController extends Controller
         $_SESSION['has-submitted-the-form'] = 1;
 
 
-
         $dbh = DatabaseConnection::getInstance();
         $dbc = $dbh->getConnection();
 
         $pageObj = new Page($dbc);
-        $pageObj->findById(4);
+        $pageObj->findBy('id', $this->entityId);
         $variables['pageObj'] = $pageObj;
         $template = new Template('default');
         $template->view('static-page', $variables);

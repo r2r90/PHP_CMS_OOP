@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Перенаправлять всё, кроме реальных файлов и папок
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Всё остальное направляем на index.php
+RewriteRule (.+) /index.php?seo_name=$1 [QSA,L]

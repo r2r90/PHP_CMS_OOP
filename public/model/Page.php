@@ -1,32 +1,18 @@
 <?php
 
-class Page
+class Page extends Entity
 {
-    public $id;
-    public $title;
-    public $content;
-    private $dbConnection;
-
+    public ?int $id = null;
+    public ?string $title = null;
+    public ?string $content = null;
     public function __construct($dbConnection)
     {
-        $this->dbConnection = $dbConnection;
+        parent::__construct($dbConnection);
+        $this->tableName = 'pages';
+        $this->fields = [
+            'id',
+            'title',
+            'content'
+        ];
     }
-
-    public function findById($id)
-    {
-
-
-        $sql = "SELECT * FROM pages WHERE id = :id";
-        $stmt = $this->dbConnection->prepare($sql);
-        $stmt->execute(array('id' => $id));
-
-
-        $pageData = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->id = $pageData['id'];
-        $this->title = $pageData['title'];
-        $this->content = $pageData['content'];
-
-
-    }
-
 }

@@ -2,6 +2,8 @@
 
 class  Controller
 {
+    protected int $entityId;
+
     function runAction($actionName): void
     {
         if (method_exists($this, 'runBeforeAction')) {
@@ -19,5 +21,10 @@ class  Controller
         } else {
             include 'view/status-pages/404.html';
         }
+    }
+
+    public function setEntityId($entityId): void
+    {
+        $this->entityId = $entityId;
     }
 }

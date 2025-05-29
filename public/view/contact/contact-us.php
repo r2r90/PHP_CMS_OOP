@@ -1,9 +1,3 @@
-<h1>
-
-</h1>
-<p>
-
-</p>
 <form class="form-signin" action="index.php" method="post">
     <input type="hidden" name="section" value="contact">
     <input type="hidden" name="action" value="submitContactForm">
