@@ -1,5 +1,6 @@
 <?php
 
+
 class Router extends Entity
 {
     public ?int $id = null;
@@ -7,6 +8,7 @@ class Router extends Entity
     public ?string $action = null;
     public ?int $entity_id = null;
     public ?string $pretty_url = null;
+
     public function __construct(PDO $dbConnection)
     {
         parent::__construct($dbConnection);

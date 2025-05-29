@@ -1,5 +1,6 @@
 <?php
 
+
 final class DatabaseConnection
 {
     private static $instance = null;

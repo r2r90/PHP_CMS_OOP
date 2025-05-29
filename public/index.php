@@ -1,10 +1,11 @@
 <?php
+
 session_start();
 
-
-define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define('ROOT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
 const VIEW_PATH = ROOT_PATH . 'view' . DIRECTORY_SEPARATOR;
 
+var_dump(ROOT_PATH);
 
 require_once ROOT_PATH . 'src/DatabaseConnection.php';
 require_once ROOT_PATH . 'src/Entity.php';
@@ -24,7 +25,7 @@ $dbh = DatabaseConnection::getInstance();
 $dbc = $dbh->getConnection();
 
 
- /* Routing */
+/* Routing */
 $action = $_GET['seo_name'] ?? "home";
 $router = new Router($dbc);
 $router->findBy('pretty_url', $action);
