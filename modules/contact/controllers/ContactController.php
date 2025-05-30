@@ -15,7 +15,7 @@ class ContactController extends Controller
             $variables['pageObj'] = $pageObj;
 
             $template = new Template('default');
-            $template->view('contact/contact-us', $variables);
+            $template->view('contact/views/contact-us', $variables);
             return false;
         }
         return true;
@@ -31,7 +31,7 @@ class ContactController extends Controller
         $pageObj->findBy('id', $this->entityId);
         $variables['pageObj'] = $pageObj;
         $template = new Template('default');
-        $template->view('contact/contact-us', $variables);
+        $template->view('page/views/contact-us', $variables);
     }
 
     function submitContactFormAction(): void
@@ -49,10 +49,8 @@ class ContactController extends Controller
         $pageObj->findBy('id', $this->entityId);
         $variables['pageObj'] = $pageObj;
         $template = new Template('default');
-        $template->view('static-page', $variables);
+        $template->view('page/views/static-page', $variables);
     }
-
-
 }
 
 

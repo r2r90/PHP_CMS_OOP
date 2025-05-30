@@ -1,7 +1,4 @@
 <?php
-
-
-
 class PageController extends Controller
 {
     function defaultAction(): void
@@ -14,7 +11,7 @@ class PageController extends Controller
         $variables['pageObj'] = $pageObj;
 
         $template = new Template('default');
-        $template->view('static-page', $variables);
+        $template->view('page/views/static-page', $variables);
     }
 
 }

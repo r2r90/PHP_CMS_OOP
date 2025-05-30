@@ -1,15 +1,19 @@
 <?php
 
 #[\AllowDynamicProperties]
-class Entity
+abstract class Entity
 {
     private PDO $dbConnection;
     protected $tableName;
     protected $fields;
 
-    public function __construct(PDO $dbConnection)
+    abstract protected function initFields();
+
+    protected function __construct(PDO $dbConnection, $tableName)
     {
         $this->dbConnection = $dbConnection;
+        $this->tableName = $tableName;
+        $this->initFields();
     }
 
     public function findBy($fieldName, $fieldValue)

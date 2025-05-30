@@ -11,8 +11,12 @@ class Router extends Entity
 
     public function __construct(PDO $dbConnection)
     {
-        parent::__construct($dbConnection);
-        $this->tableName = 'routes';
+        parent::__construct($dbConnection, 'routes');
+
+    }
+
+    protected function initFields()
+    {
         $this->fields = [
             'id',
             'module',
@@ -21,6 +25,5 @@ class Router extends Entity
             'pretty_url'
         ];
     }
-
 
 }

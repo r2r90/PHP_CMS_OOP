@@ -49,13 +49,12 @@
 <body>
 
 <?php
-
 include VIEW_PATH . 'layout/header.php';
 ?>
 
 <main class="mt-5 mx-5 pt-5 text-center">
     <?php
-    include VIEW_PATH . $template . '.php';
+        include MODULE_PATH . $template . '.php';
     ?>
 </main>
 
