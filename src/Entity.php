@@ -22,7 +22,9 @@ abstract class Entity
         $stmt = $this->dbConnection->prepare($sql);
         $stmt->execute(['value' => $fieldValue]);
         $dbData = $stmt->fetch(PDO::FETCH_ASSOC);
-        $this->setValues($dbData);
+        if ($dbData) {
+            $this->setValues($dbData);
+        }
     }
 
     public function setValues($values)
