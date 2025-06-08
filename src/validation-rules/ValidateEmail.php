@@ -1,12 +1,17 @@
 <?php
 
-class ValidateEmail
+class ValidateEmail implements ValidationRules
 {
-    function validateRule($input):bool
+    function validate($input): bool
     {
         if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
             return false;
         }
         return true;
+    }
+
+    function getErrorMessage(): string
+    {
+        return "Please enter a valid email address.";
     }
 }

@@ -11,11 +11,13 @@ const ENCRYPTION_SALT = 'qsjhsd6jqs7shd67bns21ssdpmweza783';
 
 // TODO AUTO INCLUDE FUNC
 require_once ROOT_PATH . 'src/DatabaseConnection.php';
+require_once ROOT_PATH . 'src/interfaces/ValidationRules.php';
 require_once ROOT_PATH . 'src/Rules.php';
 require_once ROOT_PATH . 'src/Validation.php';
 require_once ROOT_PATH . 'src/validation-rules/ValidateMaximum.php';
 require_once ROOT_PATH . 'src/validation-rules/ValidateMinimum.php';
 require_once ROOT_PATH . 'src/validation-rules/ValidateEmail.php';
+require_once ROOT_PATH . 'src/validation-rules/ValidateNoEmptySpaces.php';
 require_once ROOT_PATH . 'src/validation-rules/ValidateSpecialChar.php';
 require_once ROOT_PATH . 'src/Entity.php';
 require_once ROOT_PATH . 'src/Auth.php';

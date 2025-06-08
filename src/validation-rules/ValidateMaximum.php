@@ -9,11 +9,16 @@ class ValidateMaximum
         $this->maximum = $value;
     }
 
-    function validateRule($input):bool
+    function validate($input):bool
     {
         if (strlen($input) > $this->maximum) {
             return false;
         }
         return true;
     }
+    public function getErrorMessage(): string
+    {
+        return 'Maximum value is ' . $this->maximum;
+    }
+
 }

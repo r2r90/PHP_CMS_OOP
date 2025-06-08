@@ -9,11 +9,16 @@ class ValidateSpecialChar
         $this->regex = $rule;
     }
 
-    function validateRule($input):bool
+    function validate($input): bool
     {
         if (!preg_match($this->regex, $input)) {
             return false;
         }
         return true;
+    }
+
+    public function getErrorMessage(): string
+    {
+        return "Minimum one special character needed.";
     }
 }

@@ -36,16 +36,16 @@ class DashboardController extends Controller
             if (!$validation
                 ->addRule(new ValidateMinimum(3))
                 ->addRule(new ValidateMaximum(20))
+                ->addRule(new ValidateNoEmptySpaces())
                 ->addRule(new ValidateSpecialChar())
                 ->validate($password)) {
-                $_SESSION['validation_rules']['errors'] = 'Wrong password';
+                $_SESSION['validation_rules']['errors'] = $validation->getErrorMessages();
             }
             if (!$validation
                 ->addRule(new ValidateMinimum(3))
-                ->addRule(new ValidateMaximum(20))
                 ->addRule(new ValidateEmail())
                 ->validate($username)) {
-                $_SESSION['validation_rules']['errors'] = 'Wrong email';
+                $_SESSION['validation_rules']['errors'] = $validation->getErrorMessages();
             }
 
 

@@ -4,6 +4,7 @@ class Validation
 {
 
     private array $rules;
+    private array $errorMessages = [];
 
     public function addRule($rule)
     {
@@ -11,15 +12,21 @@ class Validation
         return $this;
     }
 
-    public function validate($input)
+    public function validate($input): bool
     {
         foreach ($this->rules as $rule) {
-            $result = $rule->validateRule($input);
+            $result = $rule->validate($input);
             if (!$result) {
+                $this->errorMessages[] = $rule->getErrorMessage();
                 return false;
             }
         }
 
         return true;
+    }
+
+    public function getErrorMessages(): array
+    {
+        return $this->errorMessages;
     }
 }
